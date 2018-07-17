@@ -1,0 +1,44 @@
+<ul>
+
+  <li *ngFor="let book of FavBooks ">{{book | json}}</li>
+
+</ul>
+
+
+<mat-grid-list cols="3">
+
+  <mat-grid-tile *ngFor="let book of allBooks">
+
+    <mat-card class="bookTile">
+      <mat-card-header>
+        <mat-card-title>
+          <h4>{{book.title}}</h4>
+        </mat-card-title>
+      </mat-card-header>
+      <img matCardImage src="{{book.imageUrl}}}" alt="{{book.title}}">
+
+      <mat-card-actions align="start">
+
+        <button mat-button mat-rainsed-button class="detailsButton" [routerLink]="['/book/'+book.key]">
+          <i class="material-icons">visibility</i>Book Detail </button>
+        <button mat-button mat-rainsed-button class="editButton" [routerLink]="['/edit-book/'+book.key]">
+          <i class="material-icons">mode_edit</i>Edit Book</button>
+
+
+      </mat-card-actions>
+
+    </mat-card>
+
+
+  </mat-grid-tile>
+
+</mat-grid-list>
+
+
+
+
+<!-- <ul>
+
+  <li *ngFor="let book of allBooks ">{{book.author}}</li>
+
+</ul> -->

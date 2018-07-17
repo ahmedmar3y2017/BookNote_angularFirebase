@@ -1,0 +1,63 @@
+<div *ngIf="authenticated">
+
+    <mat-toolbar>My Top Rated Books</mat-toolbar>
+
+    <mat-grid-list cols="3">
+        <mat-grid-tile *ngFor="let fav of FavBooks ; let i = index ">
+            <mat-card>
+                <mat-card-header>
+                    <mat-card-title>
+                        <h4>{{fav.title}}</h4>
+                    </mat-card-title>
+                    <mat-card-subtitle>Book {{i+1}}</mat-card-subtitle>
+                </mat-card-header>
+                <!-- <img matCardImage src="Card wide image source"> -->
+                <!-- <mat-card-content> -->
+                <img mat-card-image src="{{fav.imageUrl}}" alt="{{fav.title}}">
+                <mat-card-actions align="start">
+                    <button mat-button mat-rainsed-button class="detailsButton" [routerLink]="['/book/'+fav.key]">
+                        <i class="material-icons">visibility</i>detailButton</button>
+                    <button mat-button mat-rainsed-button class="editButton" [routerLink]="['/edit-book/'+fav.key]">
+                        <i class="material-icons">mode_edit</i>editButton</button>
+                </mat-card-actions>
+                <mat-card-footer>
+
+                </mat-card-footer>
+            </mat-card>
+        </mat-grid-tile>
+    </mat-grid-list>
+
+    <mat-toolbar>Books i have not readed</mat-toolbar>
+
+    <mat-grid-list cols="3">
+        <mat-grid-tile *ngFor="let fav of unReadBooks ; let i = index ">
+            <mat-card>
+                <mat-card-header>
+                    <mat-card-title>
+                        <h4>{{fav.title}}</h4>
+                    </mat-card-title>
+                    <mat-card-subtitle>Book {{i+1}}</mat-card-subtitle>
+                </mat-card-header>
+                <!-- <img matCardImage src="Card wide image source"> -->
+                <!-- <mat-card-content> -->
+                <img mat-card-image src="{{fav.imageUrl}}" alt="{{fav.title}}">
+                <mat-card-actions align="start">
+                    <button mat-button mat-rainsed-button class="detailsButton" [routerLink]="['/book/'+fav.key]">
+                        <i class="material-icons">visibility</i>detailButton</button>
+                    <button mat-button mat-rainsed-button class="editButton" [routerLink]="['/edit-book/'+fav.key]">
+                        <i class="material-icons">mode_edit</i>editButton</button>
+                </mat-card-actions>
+                <!-- <mat-card-footer>
+                Footer
+            </mat-card-footer> -->
+            </mat-card>
+        </mat-grid-tile>
+    </mat-grid-list>
+</div>
+
+
+<div *ngIf="!authenticated">
+
+    <h1>You Are Not Authenticated </h1>
+
+</div>
